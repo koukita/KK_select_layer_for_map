@@ -1,0 +1,2 @@
+# KK_select_layer_for_map
+地図上でクリックした地点に存在するレイヤを選択するQGISプラグイン
