@@ -4,7 +4,7 @@ qgisMinimumVersion=3.22
 qgisMaximumVersion=4.99
 description=Click on the map canvas to select the layer containing a feature at that location in the Layers panel.
 about=マップキャンバスをクリックして、地点に存在するレイヤをレイヤパネルで選択します。
-version=0.9.0
+version=0.9.1
 author=kouichi kita
 email=qgisshitumon@gmail.com
 homepage=https://github.com/koukita/KK_select_layer_for_map
@@ -15,4 +15,7 @@ category=Vector
 
 icon=icon.svg
 
+changelog=
+    2026-11-02　Ver0.9.1　Qt6対応の修正
+    2026-11-02　Ver0.9.0　初版完成
 

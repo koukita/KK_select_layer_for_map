@@ -10,21 +10,26 @@ from qgis.gui import QgsMapTool, QgsMapToolIdentify
 
 
 # QGIS 3（Qt 5）とQGIS 4（Qt 6）では、Qtの一部の定数の書き方が異なります。
-# まずQGIS 3の書き方を試し、利用できない場合はQGIS 4の書き方を使います。
+# Qt 6の書き方を優先し、利用できない場合はQt 5の書き方を使います。
 try:
-    TOOL_BUTTON_ICON_ONLY = Qt.ToolButtonIconOnly
-    TOP_TOOLBAR_AREA = Qt.TopToolBarArea
-    DELETE_ON_CLOSE = Qt.WA_DeleteOnClose
-    CROSS_CURSOR = Qt.CrossCursor
-    LEFT_BUTTON = Qt.LeftButton
-    DECORATION_ROLE = Qt.DecorationRole
-except AttributeError:
     TOOL_BUTTON_ICON_ONLY = Qt.ToolButtonStyle.ToolButtonIconOnly
     TOP_TOOLBAR_AREA = Qt.ToolBarArea.TopToolBarArea
     DELETE_ON_CLOSE = Qt.WidgetAttribute.WA_DeleteOnClose
     CROSS_CURSOR = Qt.CursorShape.CrossCursor
     LEFT_BUTTON = Qt.MouseButton.LeftButton
     DECORATION_ROLE = Qt.ItemDataRole.DecorationRole
+except AttributeError:
+    TOOL_BUTTON_ICON_ONLY = getattr(Qt, "ToolButtonIconOnly")
+    TOP_TOOLBAR_AREA = getattr(Qt, "TopToolBarArea")
+    DELETE_ON_CLOSE = getattr(Qt, "WA_DeleteOnClose")
+    CROSS_CURSOR = getattr(Qt, "CrossCursor")
+    LEFT_BUTTON = getattr(Qt, "LeftButton")
+    DECORATION_ROLE = getattr(Qt, "DecorationRole")
+
+try:
+    IDENTIFY_MODE_TOP_DOWN_ALL = QgsMapToolIdentify.IdentifyMode.TopDownAll
+except AttributeError:
+    IDENTIFY_MODE_TOP_DOWN_ALL = getattr(QgsMapToolIdentify, "TopDownAll")
 
 
 class KKSelectLayerForMap:
@@ -146,7 +151,7 @@ class KKSelectLayerForMap:
             canvas_x,
             canvas_y,
             layers,
-            QgsMapToolIdentify.TopDownAll,
+            IDENTIFY_MODE_TOP_DOWN_ALL,
         )
 
         # 1つのレイヤに複数の地物があっても、レイヤは1回だけリストに追加します。
