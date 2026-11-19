@@ -16,6 +16,8 @@ category=Vector
 icon=icon.svg
 
 changelog=
-    2026-11-02　Ver0.9.1　Qt6対応の修正
-    2026-11-02　Ver0.9.0　初版完成
+    2026-11-02　Ver0.9.1　
+    - Qt6対応の修正
+    2026-11-02　Ver0.9.0　
+    - 初版完成
 
